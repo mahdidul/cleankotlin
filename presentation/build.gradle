@@ -1,0 +1,125 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+apply plugin: 'io.fabric'
+
+android {
+    def config = rootProject.extensions.getByName("ext")
+    compileSdkVersion config["compileSdkVersion"]
+    defaultConfig {
+        applicationId config["applicationId"]
+        minSdkVersion config["minSdkVersion"]
+        targetSdkVersion config["targetSdkVersion"]
+        versionCode config["versionCode"]
+        versionName config["versionName"]
+        testInstrumentationRunner config["testInstrumentationRunner"]
+    }
+
+    packagingOptions {
+        exclude 'LICENSE.txt'
+        exclude 'META-INF/DEPENDENCIES'
+        exclude 'META-INF/ASL2.0'
+        exclude 'META-INF/NOTICE'
+        exclude 'META-INF/LICENSE'
+    }
+
+    signingConfigs {
+        debug {
+            storeFile file("debug.keystore")
+        }
+
+        release {
+            def keystoreProperties = new Properties()
+            def keystoreFile = file("keystore.properties")
+            keystoreProperties.load(new FileInputStream(keystoreFile))
+            storeFile file("release-key.jks")
+            storePassword keystoreProperties['storePassword']
+            keyAlias keystoreProperties['keyAlias']
+            keyPassword keystoreProperties['keyPassword']
+        }
+    }
+
+    buildTypes {
+        debug {
+            applicationIdSuffix ".dev"
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            ext.enableCrashlytics = false
+        }
+
+        staging {
+            applicationIdSuffix ".staging"
+            debuggable true
+            minifyEnabled false
+            signingConfig signingConfigs.debug
+            matchingFallbacks = ['debug', 'release']
+        }
+
+        release {
+            debuggable false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.release
+            ext.betaDistributionGroupAliases = "clean-internal-tester"
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+
+androidExtensions {
+    experimental = true
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(':data')
+    implementation project(':domain')
+
+    implementation depend.kotlinJdk
+    implementation depend.supportAppCompat
+    implementation depend.constraintLayout
+    implementation(depend.crashlytics) {
+        transitive = true
+    }
+
+    // Room
+    implementation depend.roomRuntime
+
+    // Android Architecture
+    implementation depend.pagingRuntime
+    implementation depend.lifecycleExtensions
+    kapt depend.lifecycleCompiler
+
+    // Rx Android
+    implementation depend.rxKotlin
+    implementation depend.rxAndroid
+    implementation depend.rxBindingKotlin
+
+    // Dagger
+    implementation depend.dagger
+    implementation depend.daggerAndroid
+    implementation depend.daggerAndroidSupport
+    kapt depend.daggerCompiler
+    kapt depend.daggerProcessor
+
+    // Firebase
+    implementation depend.firebaseCore
+    implementation depend.firebaseDatabase
+    implementation depend.firebaseMessaging
+
+    // EventBus
+    implementation depend.eventBus
+
+    testImplementation depend.jUnit
+    androidTestImplementation depend.testRunner
+    androidTestImplementation depend.espressoCore
+}
+
+apply plugin: 'com.google.gms.google-services'

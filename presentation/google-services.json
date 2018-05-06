@@ -1,0 +1,99 @@
+{
+  "project_info": {
+    "project_number": "1080955984678",
+    "firebase_url": "https://cleankotlin.firebaseio.com",
+    "project_id": "cleankotlin",
+    "storage_bucket": "cleankotlin.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080955984678:android:d79715e0df91c1bd",
+        "android_client_info": {
+          "package_name": "com.nostratech.mahdi.cleankotlin.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080955984678-231ihc22ipt44ckndgtkpcugflrbjh0d.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nostratech.mahdi.cleankotlin.dev",
+            "certificate_hash": "736bca1586ec5cf81d8fa149dded550bb2b09590"
+          }
+        },
+        {
+          "client_id": "1080955984678-qnlpl92vgu6dk417b6m3c6v8vf3q03me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAMT8EPMAs5lZ4YjpouEG6-FhFQXGrAC0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080955984678-qnlpl92vgu6dk417b6m3c6v8vf3q03me.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1080955984678:android:cb0dbe3a3cb421c4",
+        "android_client_info": {
+          "package_name": "com.nostratech.mahdi.cleankotlin.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1080955984678-gq3a8n9jc7ac4knt717odstp6imd6kvs.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.nostratech.mahdi.cleankotlin.staging",
+            "certificate_hash": "736bca1586ec5cf81d8fa149dded550bb2b09590"
+          }
+        },
+        {
+          "client_id": "1080955984678-qnlpl92vgu6dk417b6m3c6v8vf3q03me.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBAMT8EPMAs5lZ4YjpouEG6-FhFQXGrAC0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1080955984678-qnlpl92vgu6dk417b6m3c6v8vf3q03me.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

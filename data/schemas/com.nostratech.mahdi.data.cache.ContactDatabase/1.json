@@ -1,0 +1,152 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "b56450133e415303685411dfdc9db892",
+    "entities": [
+      {
+        "tableName": "users",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `user` TEXT, `name` TEXT NOT NULL, `image` TEXT, `rating` TEXT NOT NULL, `about` TEXT, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "user",
+            "columnName": "user",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "image",
+            "columnName": "image",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "rating",
+            "columnName": "rating",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "about",
+            "columnName": "about",
+            "affinity": "TEXT",
+            "notNull": false
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_users_user",
+            "unique": true,
+            "columnNames": [
+              "user"
+            ],
+            "createSql": "CREATE UNIQUE INDEX `index_users_user` ON `${TABLE_NAME}` (`user`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "users_settings",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`user_id` INTEGER NOT NULL, `new_follower_notification` INTEGER NOT NULL, `new_comment_notification` INTEGER NOT NULL, `new_request_inspired_notification` INTEGER NOT NULL, `new_post_followed_notification` INTEGER NOT NULL, `withdrawal_related_notifications` INTEGER NOT NULL, `request_related_notifications` INTEGER NOT NULL, `offer_related_notifications` INTEGER NOT NULL, `deal_related_notifications` INTEGER NOT NULL, `cancellation_notifications` INTEGER NOT NULL, `new_message_notification` INTEGER NOT NULL, PRIMARY KEY(`user_id`))",
+        "fields": [
+          {
+            "fieldPath": "userId",
+            "columnName": "user_id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newFollowerNotification",
+            "columnName": "new_follower_notification",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newCommentNotification",
+            "columnName": "new_comment_notification",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newRequestNotification",
+            "columnName": "new_request_inspired_notification",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newPostFollowedNotification",
+            "columnName": "new_post_followed_notification",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "withdrawalNotifications",
+            "columnName": "withdrawal_related_notifications",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "requestNotifications",
+            "columnName": "request_related_notifications",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "offerNotifications",
+            "columnName": "offer_related_notifications",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "dealNotifications",
+            "columnName": "deal_related_notifications",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "cancellationNotifications",
+            "columnName": "cancellation_notifications",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "newMessageNotification",
+            "columnName": "new_message_notification",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "user_id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      }
+    ],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"b56450133e415303685411dfdc9db892\")"
+    ]
+  }
+}
